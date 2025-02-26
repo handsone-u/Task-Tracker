@@ -41,4 +41,7 @@
 
 1. **백엔드 실행**
    ```sh
-   ./mvnw spring-boot:run
+   ./mvnw spring-boot:run 
+
+## Swagger-UI 
+http://localhost:8080/swagger-ui
