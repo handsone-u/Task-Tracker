@@ -2,9 +2,9 @@ package io.handsone.tasktracker.application;
 
 import io.handsone.tasktracker.security.AuthRequired;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -53,14 +53,14 @@ public class TestController {
   @AllArgsConstructor
   public static class TestResponse {
 
-    @Schema(description = "The greeting message for the user.", example = "Hello John!")
+    @Schema(description = "The greeting message for the user.", example = "Hello John!", requiredMode = RequiredMode.REQUIRED)
     String message;
   }
 
   @Data
   public static class TestRequest {
 
-    @Schema(description = "The name of the user to greet.", example = "John", required = true)
+    @Schema(description = "The name of the user to greet.", example = "John", requiredMode = RequiredMode.REQUIRED)
     String name;
   }
 }

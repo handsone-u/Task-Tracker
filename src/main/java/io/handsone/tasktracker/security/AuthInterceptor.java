@@ -6,12 +6,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 @Slf4j
-@Configuration
+@Component
 @RequiredArgsConstructor
 public class AuthInterceptor implements HandlerInterceptor {
 
@@ -21,11 +21,9 @@ public class AuthInterceptor implements HandlerInterceptor {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
 
-    if (!(handler instanceof HandlerMethod)) {
+    if (!(handler instanceof HandlerMethod handlerMethod)) {
       return true;
     }
-
-    HandlerMethod handlerMethod = (HandlerMethod) handler;
 
     if (!handlerMethod.hasMethodAnnotation(AuthRequired.class) &&
         !handlerMethod.getBeanType().isAnnotationPresent(AuthRequired.class)) {
